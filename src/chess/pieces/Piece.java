@@ -1,7 +1,9 @@
+package chess.pieces;
 import java.util.ArrayList;
 
 public class Piece {
   private boolean alive;
+  private boolean color;
 
   public Piece() {
     this.alive = true;
