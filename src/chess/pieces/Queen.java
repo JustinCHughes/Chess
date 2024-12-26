@@ -1,18 +1,26 @@
 package chess.pieces;
 import java.util.ArrayList;
 
-public class Bishop extends Piece {
+public class Queen extends Piece {
   private boolean color;
   private boolean alive;
-  
-  public Bishop() {
+
+  public Queen() {
     this.alive = true;
   }
 
   @Override
   public ArrayList<Integer[]> possibleMoves(int x, int y) {
     ArrayList<Integer[]> moves = new ArrayList<>();
-    for(int i = 1; i < 8; i++) {
+    for(int i = 0; i < 8; i++) {
+      if(i != x) {
+        Integer[] move = {i, y};
+        moves.add(move);
+      }
+      if(i != y) {
+        Integer[] move = {x, y};
+        moves.add(move);
+      }
       if(x-i >= 0 && y-i >= 0) {
         Integer[] move = {x-i, y-i};
         moves.add(move);

@@ -1,11 +1,11 @@
 package chess.pieces;
 import java.util.ArrayList;
 
-class Pawn extends Piece {
-  private boolean firstMove;
+public class Pawn extends Piece {
   private boolean color;
   private boolean alive;
-  
+  private boolean firstMove;
+
   public Pawn() {
     this.firstMove = true;
     this.alive = true;
