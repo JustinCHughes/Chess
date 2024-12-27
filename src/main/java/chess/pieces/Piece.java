@@ -6,8 +6,9 @@ public class Piece {
   protected boolean alive;
   protected char rep;
   
-  public Piece(char rep) {
+  public Piece(char rep, boolean color) {
     this.rep = rep;
+    this.color = color;
     this.alive = true;
   }
 
@@ -18,5 +19,7 @@ public class Piece {
     return list;
   }
 
-  public char retRep() { return this.rep; }
+  public char getLetter() { return this.rep; }
+
+  public boolean getColor() { return this.color; }
 }

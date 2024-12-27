@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Pawn extends Piece {
   private boolean firstMove;
 
-  public Pawn() {
-    super('P');
+  public Pawn(boolean color) {
+    super('P', color);
     this.firstMove = true;
   }
 

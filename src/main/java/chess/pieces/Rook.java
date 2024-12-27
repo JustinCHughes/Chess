@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Rook extends Piece {
 
-  public Rook() {
-    super('R');
+  public Rook(boolean color) {
+    super('R', color);
   }
 
   @Override

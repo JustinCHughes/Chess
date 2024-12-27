@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Bishop extends Piece {
 
-  public Bishop() {
-    super('B');
+  public Bishop(boolean color) {
+    super('B', color);
   }
 
   @Override

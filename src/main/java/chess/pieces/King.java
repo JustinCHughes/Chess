@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class King extends Piece{
   
-  public King() {
-    super('K');
+  public King(boolean color) {
+    super('K', color);
   }
 
   @Override

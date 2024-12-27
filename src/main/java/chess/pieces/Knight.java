@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Knight extends Piece {
   
-  public Knight() {
-    super('N');
+  public Knight(boolean color) {
+    super('N', color);
   }
 
   @Override
