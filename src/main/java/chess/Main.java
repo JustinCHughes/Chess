@@ -8,8 +8,8 @@ public class Main {
     Board chess = new Board();
     chess.print();
 
-    int letter = 1;
-    int number = 2;
+    int letter = 4;
+    int number = 1;
 
     System.out.println(chess.getPiece(number,letter).getColor());
     System.out.println(chess.getPiece(number,letter).getLetter());
