@@ -7,10 +7,9 @@ public class Main {
   public static void main(String[] args) {
     Board chess = new Board();
     chess.print();
+  }
 
-    int letter = 4;
-    int number = 1;
-
+  public static void checkMoves(Board chess, int number, int letter) {
     System.out.println(chess.getPiece(number,letter).getColor());
     System.out.println(chess.getPiece(number,letter).getLetter());
     ArrayList<Integer[]> list = chess.getPiece(number,letter).possibleMoves(number,letter);
@@ -43,7 +42,7 @@ public class Main {
           let = 'H';
           break;
         default:
-          let = 'Q';
+          let = 'X';
           break;
       }
       strlist.add(let + "" + (8-item[0]));

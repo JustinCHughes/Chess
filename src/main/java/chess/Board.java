@@ -1,4 +1,6 @@
 package chess;
+import java.util.ArrayList;
+
 import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Knight;
@@ -62,7 +64,107 @@ public class Board {
     System.out.println("   | A | B | C | D | E | F | G | H ");
   }
 
+  public ArrayList<Integer[]> pruneMoves(int number, int letter) {
+    if(this.getPiece(number, letter) instanceof Queen) {
+      return pruneQueen(number, letter);
+    } else if(this.getPiece(number, letter) instanceof King) {
+      return pruneKnight(number, letter);
+    } else if(this.getPiece(number, letter) instanceof Rook) {
+      return pruneRook(number, letter);
+    } else if(this.getPiece(number, letter) instanceof Bishop) {
+      return pruneBishop(number, letter);
+    } else if(this.getPiece(number, letter) instanceof Knight) {
+      return pruneKnight(number, letter);
+    } else if(this.getPiece(number, letter) instanceof Pawn) {
+      return prunePawn(number, letter);
+    } else {
+      return null;
+    }
+  }
+
   public Piece getPiece(int number, int letter) {
+    if(number > 8 || number < 1 || letter < 1 || number > 8)
+      return null;
     return this.cells[(8-number)][letter-1];
+  }
+
+  public ArrayList<Integer[]> pruneQueen(int number, int letter) {
+    ArrayList<Integer[]> moves = new ArrayList<>();
+    moves = this.getPiece(number, letter).possibleMoves(number, letter);
+    return moves;
+  }
+
+  public ArrayList<Integer[]> pruneKing(int number, int letter) {
+    ArrayList<Integer[]> moves = new ArrayList<>();
+    moves = this.getPiece(number, letter).possibleMoves(number, letter);
+    return moves;
+  }
+
+  public ArrayList<Integer[]> pruneRook(int number, int letter) {
+    ArrayList<Integer[]> moves = new ArrayList<>();
+    Piece rook = this.getPiece(number, letter);
+    moves = rook.possibleMoves(number, letter);
+
+    int maxX = 10;
+    int minX = -10;
+    int maxY = 10;
+    int minY = -10;
+
+    for(int i = 1; i < 8; i++) {
+      Piece temp = this.getPiece(number, letter + i);
+      if(maxX == 10 && temp != null) {
+        if(rook.getColor() == temp.getColor()) {
+          maxX = letter + i - 1;
+        } else {
+          maxX = letter + i;
+        }
+      }
+      temp = this.getPiece(number, letter - i);
+      if(minX == -10 && temp != null) {
+        if(rook.getColor() == temp.getColor()) {
+          maxX = letter - i - 1;
+        } else {
+          minX = letter - i;
+        }
+      }
+      temp = this.getPiece(number + i, letter);
+      if(maxY == 10 && temp != null) {
+        if(rook.getColor() == temp.getColor()) {
+          maxX = number + i - 1;
+        } else {
+          maxX = number + i;
+        }
+      }
+      temp = this.getPiece(number - i, letter);
+      if(minY == -10 && temp != null) {
+        if(rook.getColor() == temp.getColor()) {
+          maxX = number - i - 1;
+        } else {
+          maxX = number - i;
+        }
+      }
+    }
+
+    moves.removeIf(item -> item[0] < minX);
+
+    return moves;
+  }
+
+  public ArrayList<Integer[]> pruneBishop(int number, int letter) {
+    ArrayList<Integer[]> moves = new ArrayList<>();
+    moves = this.getPiece(number, letter).possibleMoves(number, letter);
+    return moves;
+  }
+
+  public ArrayList<Integer[]> pruneKnight(int number, int letter) {
+    ArrayList<Integer[]> moves = new ArrayList<>();
+    moves = this.getPiece(number, letter).possibleMoves(number, letter);
+    return moves;
+  }
+
+  public ArrayList<Integer[]> prunePawn(int number, int letter) {
+    ArrayList<Integer[]> moves = new ArrayList<>();
+    moves = this.getPiece(number, letter).possibleMoves(number, letter);
+    return moves;
   }
 }
