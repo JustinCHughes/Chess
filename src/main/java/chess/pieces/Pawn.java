@@ -10,14 +10,20 @@ public class Pawn extends Piece {
   }
 
   @Override
-  public ArrayList<Integer[]> possibleMoves(int x, int y) {
+  public ArrayList<Integer[]> possibleMoves(int number, int letter) {
     ArrayList<Integer[]> moves = new ArrayList<>();
+    number = 8 - number;
+    letter = letter - 1;
+    int sign = 1;
+    if(color)
+      sign = -1;
+
     if(this.firstMove == true) {
-      Integer[] move = {x + 2, y};
+      Integer[] move = {number + (2 * sign), letter};
       moves.add(move);
       this.firstMove = false;
     }
-    Integer[] move = {x + 1, y};
+    Integer[] move = {number + (2 * sign), letter};
     moves.add(move);
     return moves;
   }

@@ -8,15 +8,18 @@ public class Rook extends Piece {
   }
 
   @Override
-  public ArrayList<Integer[]> possibleMoves(int x, int y) {
+  public ArrayList<Integer[]> possibleMoves(int number, int letter) {
     ArrayList<Integer[]> moves = new ArrayList<>();
+    number = 8 - number;
+    letter = letter - 1;
+
     for(int i = 0; i < 8; i++) {
-      if(i != x) {
-        Integer[] move = {i, y};
+      if(i != number) {
+        Integer[] move = {i, letter};
         moves.add(move);
       }
-      if(i != y) {
-        Integer[] move = {x, i};
+      if(i != letter) {
+        Integer[] move = {number, i};
         moves.add(move);
       }
     }

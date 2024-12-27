@@ -12,9 +12,12 @@ public class Piece {
     this.alive = true;
   }
 
-  public ArrayList<Integer[]> possibleMoves(int x, int y) {
+  public ArrayList<Integer[]> possibleMoves(int number, int letter) {
     ArrayList<Integer[]> list = new ArrayList<>();
-    Integer[] dummyMove = {x,y};
+    number = 8 - number;
+    letter = letter - 1;
+
+    Integer[] dummyMove = {number,letter};
     list.add(dummyMove);
     return list;
   }

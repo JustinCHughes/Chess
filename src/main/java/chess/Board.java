@@ -62,7 +62,7 @@ public class Board {
     System.out.println("   | A | B | C | D | E | F | G | H ");
   }
 
-  public Piece getPiece(int letter, int number) {
+  public Piece getPiece(int number, int letter) {
     return this.cells[(8-number)][letter-1];
   }
 }

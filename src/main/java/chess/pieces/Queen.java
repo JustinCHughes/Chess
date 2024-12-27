@@ -8,31 +8,34 @@ public class Queen extends Piece {
   }
 
   @Override
-  public ArrayList<Integer[]> possibleMoves(int x, int y) {
+  public ArrayList<Integer[]> possibleMoves(int number, int letter) {
     ArrayList<Integer[]> moves = new ArrayList<>();
+    number = 8 - number;
+    letter = letter - 1;
+
     for(int i = 0; i < 8; i++) {
-      if(i != x) {
-        Integer[] move = {i, y};
+      if(i != number) {
+        Integer[] move = {i, letter};
         moves.add(move);
       }
-      if(i != y) {
-        Integer[] move = {x, i};
+      if(i != letter) {
+        Integer[] move = {number, i};
         moves.add(move);
       }
-      if(x-i >= 0 && y-i >= 0) {
-        Integer[] move = {x-i, y-i};
+      if(number-i >= 0 && letter-i >= 0 && number-i < 8 && letter-i < 8) {
+        Integer[] move = {number-i, letter-i};
         moves.add(move);
       }
-      if(x-i >= 0 && y+1 < 8) {
-        Integer[] move = {x-i, y+i};
+      if(number-i >= 0 && letter+i < 8 && number-i < 8 && letter+i >= 0) {
+        Integer[] move = {number-i, letter+i};
         moves.add(move);
       }
-      if(x+i < 8 && y-1 >= 0) {
-        Integer[] move  = {x+i, y-i};
+      if(number+i < 8 && letter-i >= 0 && number+i >= 0 && letter-i < 8) {
+        Integer[] move  = {number+i, letter-i};
         moves.add(move);
       }
-      if(x+1 < 8 && y+1 < 8) {
-        Integer[] move = {x+i, y+1};
+      if(number+1 < 8 && letter+i < 8 && number+1 >= 0 && letter+i >= 0) {
+        Integer[] move = {number+i, letter+i};
         moves.add(move);
       }
     }
